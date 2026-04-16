@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mon Netflix</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #141414;
+      color: white;
+      font-family: Arial;
+    }
+
+    h1 {
+      padding: 20px;
+    }
+
+    .row {
+      display: flex;
+      overflow-x: scroll;
+      padding: 20px;
+    }
+
+    .card {
+      min-width: 200px;
+      margin-right: 10px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.1);
+    }
+
+    .card video {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    #player {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #player video {
+      width: 90%;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>🎬 Mon Netflix</h1>
+
+<div class="row">
+
+  <div class="card" onclick="playVideo('video1.mp4')">
+    <video src="video1.mp4"></video>
+  </div>
+
+  <div class="card" onclick="playVideo('video2.mp4')">
+    <video src="video2.mp4"></video>
+  </div>
+
+</div>
+
+<div id="player" onclick="closePlayer()">
+  <video id="mainVideo" controls autoplay></video>
+</div>
+
+<script>
+function playVideo(src) {
+  let player = document.getElementById("player");
+  let video = document.getElementById("mainVideo");
+
+  video.src = src;
+  player.style.display = "flex";
+}
+
+function closePlayer() {
+  let player = document.getElementById("player");
+  let video = document.getElementById("mainVideo");
+
+  video.pause();
+  player.style.display = "none";
+}
+</script>
+
+</body>
+</html>
